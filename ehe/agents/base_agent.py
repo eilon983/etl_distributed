@@ -1,7 +1,7 @@
 import socket
 import threading
-import ehe
-
+import ehe.mysql
+import ehe.oracle
 ENCODING = 'utf-8'
 
 
@@ -11,6 +11,8 @@ class BaseAgent(threading.Thread):
         threading.Thread.__init__(self, name="messenger_receiver")
         self.host = my_host
         self.port = my_port
+        self.mysql = ehe.mysql.MySql()
+        self.oracle = ehe.oracle.Oracle()
 
     def listen(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

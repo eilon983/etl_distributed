@@ -1,29 +1,31 @@
-import cx_Oracle
+import mysql.connector
 import pandas as pd
 import ehe
 
-def __init__(self):
-    # set an mssql connection
-    self._connection = None
-@property
-def connection(self):
-    """mysql connection"""
-    if self._connection is None or self._connection.database is None:
-        # init a connection
-        try:
-            mydb = cx_Oracle.connector.connect(
-                timeout=2000,
-                autocommit=True,
-                **ehe.config['oracle']
-            )
-        #will try two times to connect
-        except:
-            mydb = cx_Oracle.connector.connect(
-                timeout=2000,
-                autocommit=True,
-                **ehe.config['oracle'])
 
-    return self._connection
+class MySql(object):
+    def __init__(self):
+        # set an mssql connection
+        self._connection = None
+
+    @property
+    def connection(self):
+        """mysql connection"""
+        if self._connection is None or self._connection.database is None:
+            # init a connection
+            try:
+                mydb = mysql.connector.connect(
+                    timeout=2000,
+                    autocommit=True,
+                    **ehe.config['mysql'])
+            #will try two times to connect
+            except:
+                mydb = mysql.connector.connect(
+                    timeout=2000,
+                    autocommit=True,
+                    **ehe.config['mysql'])
+
+        return self._connection
 
     @connection.setter
     def connection(self, value):
