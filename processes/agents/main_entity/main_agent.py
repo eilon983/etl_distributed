@@ -1,11 +1,11 @@
 import socket
 import threading
 import repo
-
+import processes
 ENCODING = 'utf-8'
 
 #test
-class MainAgent(threading.Thread):
+class MainAgent(threading.Thread,processes.agen):
     def __init__(self, my_host, my_port, queue, users):
         threading.Thread.__init__(self, name="messenger_receiver")
         self.host = my_host
