@@ -1,6 +1,6 @@
 import socket
 import threading
-import processes
+import ehe
 
 ENCODING = 'utf-8'
 
