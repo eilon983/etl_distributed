@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c427c1c-8da3-41e0-9660-d43a617c464e" name="Default Changelist" comment="dsadasdsa">
+    <list default="true" id="7c427c1c-8da3-41e0-9660-d43a617c464e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ehe/utilies/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehe/agents/base_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/agents/base_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehe/utilities/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/utilies/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehe/utilities/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/mysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehe/utilities/oracle.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/oracle.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,35 +17,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/processes/agents/main_entity/main_agent.py">
+        <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            <state relative-caret-position="-1433">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processes/agents/base_agent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processes/agents/main_entity/repo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -62,8 +50,19 @@
       <list>
         <option value="$PROJECT_DIR$/processes/agents/main_agent.py" />
         <option value="$PROJECT_DIR$/processes/agents/main_entity/repo.py" />
-        <option value="$PROJECT_DIR$/processes/agents/base_agent.py" />
         <option value="$PROJECT_DIR$/processes/agents/main_entity/main_agent.py" />
+        <option value="$PROJECT_DIR$/processes/agents/base_agent.py" />
+        <option value="$PROJECT_DIR$/requierments.txt" />
+        <option value="$PROJECT_DIR$/processes/config.json" />
+        <option value="$PROJECT_DIR$/processes/config.json.py" />
+        <option value="$PROJECT_DIR$/config.json" />
+        <option value="$PROJECT_DIR$/processes/utilities/mysql.py" />
+        <option value="$PROJECT_DIR$/processes/utilities/oracle.py" />
+        <option value="$PROJECT_DIR$/ehe/agents/tools/transfer_file.py" />
+        <option value="$PROJECT_DIR$/ehe/utilities/oracle.py" />
+        <option value="$PROJECT_DIR$/ehe/utilities/mysql.py" />
+        <option value="$PROJECT_DIR$/ehe/oracle.py" />
+        <option value="$PROJECT_DIR$/ehe/agents/base_agent.py" />
       </list>
     </option>
   </component>
@@ -74,11 +73,39 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ehe" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ehe" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="agents" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ehe" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="agents" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main_entity" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -87,9 +114,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ehe" />
+      <recent name="$PROJECT_DIR$/ehe/utilies" />
+      <recent name="$PROJECT_DIR$/processes/utilities" />
+      <recent name="$PROJECT_DIR$/processes" />
       <recent name="$PROJECT_DIR$/processes/agents/main_entity" />
     </key>
   </component>
@@ -115,7 +147,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559665437470</updated>
-      <workItem from="1559665444483" duration="1615000" />
+      <workItem from="1559665444483" duration="5935000" />
+      <workItem from="1559679643951" duration="609000" />
     </task>
     <task id="LOCAL-00001" summary="dsadasdsa">
       <created>1559668487190</created>
@@ -124,19 +157,41 @@
       <option name="project" value="LOCAL" />
       <updated>1559668487190</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="utilites">
+      <created>1559669027033</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559669027033</updated>
+    </task>
+    <task id="LOCAL-00003" summary="utilites">
+      <created>1559669277384</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559669277384</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1615000" />
+    <option name="totallyTimeSpent" value="6544000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16220239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="GitHub Pull Requests" sideWeight="0.49925596" visible="true" weight="0.19639935" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -145,10 +200,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.12111293" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.33015007" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50074404" side_tool="true" visible="true" weight="0.19639935" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32968536" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -162,36 +217,71 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dsadasdsa" />
-    <option name="LAST_COMMIT_MESSAGE" value="dsadasdsa" />
+    <MESSAGE value="utilites" />
+    <option name="LAST_COMMIT_MESSAGE" value="utilites" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/processes/agents/main_entity/__init__.py">
+    <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/processes/agents/main_entity/main_agent.py">
+    <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        <state relative-caret-position="-1433">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processes/agents/base_agent.py">
+    <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/repo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="330">
+          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/python@2/2.7.16/Frameworks/Python.framework/Versions/2.7/lib/python2.7/bsddb/dbtables.py" />
+    <entry file="file://$PROJECT_DIR$/processes/config.json" />
+    <entry file="file://$PROJECT_DIR$/processes/config.json.py" />
+    <entry file="file://$PROJECT_DIR$/ehe/utilies/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/site-packages/snowflake/connector/file_transfer_agent.py" />
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehe/agents/tools/transfer_file.py" />
+    <entry file="file://$PROJECT_DIR$/ehe/mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processes/agents/main_entity/repo.py">
+    <entry file="file://$PROJECT_DIR$/ehe/oracle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehe/agents/base_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
