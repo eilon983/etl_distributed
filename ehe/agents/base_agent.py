@@ -10,10 +10,10 @@ class BaseAgent(threading.Thread):
     def __init__(self, my_host, my_port):
         threading.Thread.__init__(self, name="messenger_receiver")
         self.host = my_host
-        self.port = my_port
+        self.port = my_portgi
         self.mysql = ehe.mysql.MySql()
         self.oracle = ehe.oracle.Oracle()
-
+g
     def listen(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.bind((self.host, self.port))
