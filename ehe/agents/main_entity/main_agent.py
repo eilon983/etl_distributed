@@ -5,8 +5,8 @@ ENCODING = 'utf-8'
 
 
 class MainAgent(BaseAgent):
-    def __init__(self, my_host, my_port):
-        super(BaseAgent,my_host,my_port)
+    def __init__(self, my_host, my_port,frequency):
+        super(BaseAgent,my_host,my_port,frequency)
         self.waiting_list = {} # dictionary of lists. key = data type, value: list of agents who wait for data types
         self.agents_book = {}  # dictionary of 'contact book' with the details of all the available agents
 
@@ -47,10 +47,16 @@ class MainAgent(BaseAgent):
         return 'Not Available'
 
     # todo: call the functions from here according to the json in message
-    def recive(self, message):
+    def receive(self, message):
+        request_type = message.request.type
         pass
 
+#-- starts the system, call base class
+if __name__ == '__main__':
+    agent = MainAgent(
 
+    )
+    agent.start_system(my_host= '', my_port='',frequency='')
 
 
 
