@@ -1,99 +1,58 @@
 import socket
 import threading
-import repo
-import ehe
+from ehe.agents.base_agent import BaseAgent
 ENCODING = 'utf-8'
 
-#test
-class MainAgent(threading.Thread, ehe.agen):
-    def __init__(self, my_host, my_port, queue, users):
-        threading.Thread.__init__(self, name="messenger_receiver")
-        self.host = my_host
-        self.port = my_port
-        self.queue = queue
-        self.users = users
 
-    def resolve_message(self, message):
-        if "connect_request" in message:
-            print("connect request received")
-            arr = message.split("|")
-            if len(arr) == 4:
-                user_name = arr[1]
-                user_host = arr[2]
-                user_port = arr[3]
-                print("adding user: {}, {}, {}".format(user_name, user_host, user_port))
-                self.users.add_user(user_name, user_host, user_port)
-            else:
-                print("invalid connect request...")
-        elif "from:" in message:
-            print("received message... starting queueing process")
-            arr = message.split("|")
-            if len(arr) == 2:
-                sender_name = arr[0].replace("from:", "")
-                print("adding message from {} to queue".format(sender_name))
-                message_text = arr[1]
-                self.queue.add_message(sender_name, message_text)
+class MainAgent(BaseAgent):
+    def __init__(self, my_host, my_port):
+        super(BaseAgent,my_host,my_port)
+        self.waiting_list = {} # dictionary of lists. key = data type, value: list of agents who wait for data types
+        self.agents_book = {}  # dictionary of 'contact book' with the details of all the available agents
 
-    def run(self):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.bind((self.host, self.port))
-        sock.listen(10)
-        while True:
-            connection, client_address = sock.accept()
-            print("connection received from {}".format(str(client_address)))
-            try:
-                full_message = ""
-                while True:
-                    data = connection.recv(16)
-                    full_message = full_message + data.decode(ENCODING)
-                    if not data:
-                        print("received message: [{}]".format(full_message))
-                        self.resolve_message(full_message.strip())
-                        break
-            finally:
-                print("exchange finished. closing connection")
-                connection.shutdown(2)
-                connection.close()
+    # ---in case agents make FIRST connection
+    def pinged(self,data):
+        sender = data['sender']
+        self.agents_book[sender['name']]=sender
+        self.check_waiting_list(sender['data_type'])
+        pass
+
+    # --in case agent wants other agent connection
+    def bridge(self,data):
+        requested_dataTypes = data.request.array
+        contacts = {}
+        for dt in requested_dataTypes:
+            agent = self.get_agent(dt)
+            contacts[dt] = self.get_agent(dt)
+        self.send(data.sender.address,contacts)
+
+    # ---runs over all the waiting list and notify them if the current agent has information for them
+    # todo it smart
+    def check_waiting_list(self,data_types):
+        ############to build##############
+        for dt in data_types:
+            if dt in self.waiting_list:
+                #todo
+                pass
 
 
-class Sender(threading.Thread):
+    # ---get the requested data type, and the agents who asked for dt
+    # ---if data type not exists add the agent to the waiting list
+    def get_agent(self,data_type,agent):
+        for agent in self.agents_book:
+            if data_type in agent['data_type']:
+                return agent
+    # ---in case there is no agent who can send the data type
+        self.waiting_list[data_type].append(agent['name'])
+        return 'Not Available'
 
-    def __init__(self, queue, users):
-        threading.Thread.__init__(self, name="messenger_sender")
-        self.queue = queue
-        self.users = users
-
-    def send(self, message, host, port):
-        print("sending message {} to {}".format(message, str((host, port))))
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        try:
-            s.connect((host, port))
-            s.sendall(message.encode(ENCODING))
-        finally:
-            print("message has been sent. closing connection")
-            s.shutdown(2)
-            s.close()
-
-    def run(self):
-        while True:
-            if self.queue.messages_waiting():
-                print("there are messages on queue. popping one")
-                message = self.queue.pop_message()
-                users = self.users.all_users()
-                for user in users:
-                    if user.get("name") != message.get("sender"):
-                        self.send("{}: {}".format(message.get("sender"), message.get("message")), user.get("host"),
-                                  user.get("port"))
+    # todo: call the functions from here according to the json in message
+    def recive(self, message):
+        pass
 
 
-def main():
-    queue = repo.Queue()
-    users = repo.Users()
-    host = input("host: ")
-    port = int(input("port: "))
-    receiver = Receiver(host, port, queue, users)
-    sender = Sender(queue, users)
-    threads = [receiver.start(), sender.start()]
 
-if __name__ == '__main__':
-    main()
+
+
+
+
