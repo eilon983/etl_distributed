@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c427c1c-8da3-41e0-9660-d43a617c464e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ehe/utilies/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/etldistributed.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/etldistributed.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ehe/agents/base_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/agents/base_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehe/utilities/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/utilies/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehe/utilities/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/mysql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehe/utilities/oracle.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/oracle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/agents/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/agents/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/agents/base_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/agents/main_entity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/agents/main_entity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/agents/main_entity/main_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/agents/main_entity/repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehe/agents/main_entity/repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/utilities/mysql.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/processes/utilities/oracle.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +23,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="etl_distributed" />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ehe/agents/base_agent.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="34">
+              <caret line="2" column="9" selection-start-line="2" selection-end-line="2" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-534">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -29,25 +49,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ehe/oracle.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ehe/agents/base_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="88">
+              <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
               <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ehe/mysql.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,44 +90,45 @@
         <option value="$PROJECT_DIR$/ehe/utilities/oracle.py" />
         <option value="$PROJECT_DIR$/ehe/utilities/mysql.py" />
         <option value="$PROJECT_DIR$/ehe/oracle.py" />
+        <option value="$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py" />
         <option value="$PROJECT_DIR$/ehe/agents/base_agent.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="825" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="etldistributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etldistributed" type="462c0819:PsiDirectoryNode" />
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
-              <item name="etldistributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etldistributed" type="462c0819:PsiDirectoryNode" />
-              <item name="ehe" type="462c0819:PsiDirectoryNode" />
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ehe" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="etldistributed" type="b2602c69:ProjectViewProjectNode" />
-              <item name="etldistributed" type="462c0819:PsiDirectoryNode" />
-              <item name="ehe" type="462c0819:PsiDirectoryNode" />
-              <item name="utilies" type="462c0819:PsiDirectoryNode" />
+              <item name="etl_distributed" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Ziv\PycharmProjects\etl_distributed" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ehe" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="agents" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -184,31 +193,47 @@
       <option name="project" value="LOCAL" />
       <updated>1559669277384</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎00004" summary="Merge branch 'master' of https://github.com/eilon983/etl_distributed&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1559806323031</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1559806323031</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="6544000" />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16220239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.3296131" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33015007" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32968536" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.22247024" side_tool="true" visible="true" weight="0.3584288" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7775298" visible="true" weight="0.3584288" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4985119" weight="0.33060557" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -222,21 +247,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dsadasdsa" />
     <MESSAGE value="utilites" />
-    <option name="LAST_COMMIT_MESSAGE" value="utilites" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/eilon983/etl_distributed&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/eilon983/etl_distributed&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/repo.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -245,13 +261,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/python@2/2.7.16/Frameworks/Python.framework/Versions/2.7/lib/python2.7/bsddb/dbtables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="938">
-          <caret line="219" column="36" lean-forward="true" selection-start-line="219" selection-start-column="36" selection-end-line="219" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/Cellar/python@2/2.7.16/Frameworks/Python.framework/Versions/2.7/lib/python2.7/bsddb/dbtables.py" />
     <entry file="file://$PROJECT_DIR$/processes/config.json" />
     <entry file="file://$PROJECT_DIR$/processes/config.json.py" />
     <entry file="file://$PROJECT_DIR$/ehe/utilies/config.json">
@@ -261,31 +271,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/site-packages/snowflake/connector/file_transfer_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2863">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/lib/python2.7/site-packages/snowflake/connector/file_transfer_agent.py" />
     <entry file="file://$PROJECT_DIR$/ehe/agents/tools/transfer_file.py" />
-    <entry file="file://$PROJECT_DIR$/ehe/mysql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehe/oracle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -296,10 +283,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ehe/mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" selection-start-line="2" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehe/agents/main_entity/main_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-534">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehe/agents/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/ehe/agents/base_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="88">
+          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

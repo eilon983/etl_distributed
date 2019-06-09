@@ -1,30 +1,75 @@
 import socket
 import threading
-import repo
+#import repo
 import ehe
 ENCODING = 'utf-8'
 
-#test
+
 class MainAgent(threading.Thread, ehe.agen):
-    def __init__(self, my_host, my_port, queue, users):
-        threading.Thread.__init__(self, name="messenger_receiver")
+    def __init__(self, my_host, my_port):
+        threading.Thread.__init__(self, name="Main_Agent")
         self.host = my_host
         self.port = my_port
-        self.queue = queue
-        self.users = users
+        self.agentsList = []
+        self.data_waiting_list = []
+
+    def check_data_request(self, data):
+        agents = []
+        for i in range(self.agentsList.__len__()):
+            cur_data = self.agentsList[i][3]
+            if cur_data.__contains__(data):
+                agents.append(self.agentsList[i][0])
+        return agents
+
+    def add_data_request(self, data, user_name):
+        exists = False
+        for i in range( self.data_waiting_list.__len__()):
+            if self.data_waiting_list[i][0] == data:
+                self.data_waiting_list[i][1].append(user_name)
+                exists = True
+                break
+        if not exists:
+            self.data_waiting_list.__add__([data, [user_name]])
+
+    def send_data(self, agents_data, user_name):
+        found_user = False
+        for i in range(self.agentsList.__len__()):
+            if self.agentsList[i][0] == user_name:
+                sender = Sender(self.agentsList[i][2], self.agentsList[i][3])
+                found_user = True
+        if found_user:
+            message = "data_reply {}".format(agents_data)
+            sender.send(message)
+        else:
+            print("no connection to {} user".format(user_name))
 
     def resolve_message(self, message):
         if "connect_request" in message:
             print("connect request received")
             arr = message.split("|")
-            if len(arr) == 4:
+            if len(arr) == 5:
                 user_name = arr[1]
                 user_host = arr[2]
                 user_port = arr[3]
-                print("adding user: {}, {}, {}".format(user_name, user_host, user_port))
-                self.users.add_user(user_name, user_host, user_port)
+                user_data = arr[4]  #data list
+                print("adding user: {}, {}, {}, {}".format(user_name, user_host, user_port, user_data))
+                agent = [user_name, user_host, user_port, user_data]
+                self.agentsList.append(agent)
             else:
                 print("invalid connect request...")
+        elif "data_request:" in message:
+            print("data request received")
+            arr = message.split("|")
+            if len(arr) == 3:
+                user_name = arr[1]
+                user_data_request = arr[2]
+                agents_data = self.check_data_request(user_data_request)
+                if agents_data.__len__() == 0:
+                    self.add_data_request(self, user_data_request, user_name)
+                else:
+                    self.send_data(agents_data, user_name)
+            else:
+                print("invalid data request...")
         elif "from:" in message:
             print("received message... starting queueing process")
             arr = message.split("|")
@@ -58,41 +103,42 @@ class MainAgent(threading.Thread, ehe.agen):
 
 class Sender(threading.Thread):
 
-    def __init__(self, queue, users):
-        threading.Thread.__init__(self, name="messenger_sender")
-        self.queue = queue
-        self.users = users
+    def __init__(self, host, port):
+        threading.Thread.__init__(self, name="main_agent_sender")
+        self.host = host
+        self.port = port
 
-    def send(self, message, host, port):
-        print("sending message {} to {}".format(message, str((host, port))))
+    def send(self, message):
+        print("sending message {} to {}".format(message, str((self.host, self.port))))
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
-            s.connect((host, port))
+            s.connect((self.host, self.port))
             s.sendall(message.encode(ENCODING))
         finally:
             print("message has been sent. closing connection")
             s.shutdown(2)
             s.close()
 
-    def run(self):
-        while True:
-            if self.queue.messages_waiting():
-                print("there are messages on queue. popping one")
-                message = self.queue.pop_message()
-                users = self.users.all_users()
-                for user in users:
-                    if user.get("name") != message.get("sender"):
-                        self.send("{}: {}".format(message.get("sender"), message.get("message")), user.get("host"),
-                                  user.get("port"))
+#    def run(self):
+#       while True:
+#          if self.queue.messages_waiting():
+            #                print("there are messages on queue. popping one")
+            #   message = self.queue.pop_message()
+            #   users = self.users.all_users()
+            #   for user in users:
+            #       if user.get("name") != message.get("sender"):
+            #           self.send("{}: {}".format(message.get("sender"), message.get("message")), user.get("host"),
+#                     user.get("port"))
 
 
 def main():
-    queue = repo.Queue()
-    users = repo.Users()
-    host = input("host: ")
-    port = int(input("port: "))
-    receiver = Receiver(host, port, queue, users)
-    sender = Sender(queue, users)
+#    users = repo.Users()
+    my_host = input("my host: ")
+    my_port = int(input("my port: "))
+    receiver = MainAgent(my_host, my_port)
+    send_host = input("server host: ")
+    send_port = int(input("server port: "))
+    sender = Sender(send_host, send_port)
     threads = [receiver.start(), sender.start()]
 
 if __name__ == '__main__':
