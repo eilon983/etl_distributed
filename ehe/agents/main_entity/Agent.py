@@ -1,6 +1,8 @@
 import socket
 import sys
 import threading
+from abc import abstractmethod
+
 
 class Agent:
 
@@ -29,7 +31,7 @@ class Agent:
     print("Listening...")
 
 
-    def client_thread(conn):
+    def client_thread_receive(conn):
         conn.send("Welcome to the Server. Type messages and press enter to send.\n")
 
         while True:
@@ -40,15 +42,18 @@ class Agent:
             conn.sendall(reply)
         conn.close()
 
-    while True:
+    @abstractmethod
+    def client_thread_send(self):
+        pass
 
+    while True:
         #waits to accept a connection
         conn, addr = s.accept()
         print("[-] Connected to " + addr[0] + ":" + str(addr[1]))
 
         #creating another thread after recognize a connection
         #this thread will be closed after receving data
-        t1 = threading.Thread(client_thread(conn))
+        t1 = threading.Thread(client_thread_receive(conn))
         t1.start()
 
     s.close()

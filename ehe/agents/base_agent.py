@@ -1,8 +1,11 @@
 import socket
 import threading
+from abc import abstractmethod
+
 import ehe.mysql
 import ehe.oracle
 ENCODING = 'utf-8'
+
 
 
 class BaseAgent(threading.Thread):
@@ -24,7 +27,10 @@ class BaseAgent(threading.Thread):
                 full_message = ""
                 while True:
                     data = connection.recv(16)
-                    full_message = full_message + data.decode(ENCODING)
+                    t1 = threading.Thread(target=self.send_and_recive,args=(connection,data))
+                    t1.start()
+                    #full_message = full_message + data.decode(ENCODING)
+
                     if not data:
                         print(full_message.strip())
                         break
@@ -32,43 +38,48 @@ class BaseAgent(threading.Thread):
                 connection.shutdown(2)
                 connection.close()
 
+    @abstractmethod
+    def send_and_recive(self):
+        pass
+
     def run(self):
         self.listen()
 
 
-class Sender(threading.Thread):
-
-    def __init__(self, server_host, server_port, user_name, local_host, local_port):
-        threading.Thread.__init__(self, name="messenger_sender")
-        self.host = server_host
-        self.port = server_port
-        self.user_name = user_name
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((self.host, self.port))
-        s.sendall("connect_request|{}|{}|{}".format(user_name, local_host, local_port).encode(ENCODING))
-        s.shutdown(2)
-        s.close()
-
-    def run(self):
-        while True:
-            message = input("")
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((self.host, self.port))
-            s.sendall("from:{}|{}".format(self.user_name, message).encode(ENCODING))
-            s.shutdown(2)
-            s.close()
-
-
-def main():
-    my_host = input("host: ")
-    my_port = int(input("port: "))
-    receiver = BaseAgent(my_host, my_port)
-    server_host = input("server host: ")
-    server_port = int(input("server port: "))
-    user_name = input("user name: ")
-    sender = Sender(server_host, server_port, user_name, my_host, my_port)
-    treads = [receiver.start(), sender.start()]
+# class Sender(threading.Thread):
+#
+#     def __init__(self, server_host, server_port, user_name, local_host, local_port):
+#         threading.Thread.__init__(self, name="messenger_sender")
+#         self.host = server_host
+#         self.port = server_port
+#         self.user_name = user_name
+#         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#         s.connect((self.host, self.port))
+#         s.sendall("connect_request|{}|{}|{}".format(user_name, local_host, local_port).encode(ENCODING))
+#         s.shutdown(2)
+#         s.close()
+#
+#     def run(self):
+#         while True:
+#             message = input("")
+#             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#             s.connect((self.host, self.port))
+#             s.sendall("from:{}|{}".format(self.user_name, message).encode(ENCODING))
+#             s.shutdown(2)
+#             s.close()
 
 
-if __name__ == '__main__':
-    main()
+#def main():
+#    my_host = input("host: ")
+#    my_port = int(input("port: "))
+#    receiver = BaseAgent(my_host, my_port)
+#    server_host = input("server host: ")
+#    server_port = int(input("server port: "))
+#    user_name = input("user name: ")
+#  #  sender = Sender(server_host, server_port, user_name, my_host, my_port)
+#   # treads = [receiver.start(), sender.start()]
+#
+#
+#if __name__ == '__main__':
+#    main()
+#
