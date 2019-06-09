@@ -38,6 +38,12 @@ class BaseAgent(threading.Thread):
                 connection.shutdown(2)
                 connection.close()
 
+    def send(self,send_list): #list of [address,data(json)]
+        for node in send_list:
+           pass #multi thread - open socket to node['address'] and send the data node['data']
+        pass
+
+
     @abstractmethod
     def send_and_recive(self):
         pass
