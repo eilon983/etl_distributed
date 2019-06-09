@@ -10,12 +10,22 @@ ENCODING = 'utf-8'
 
 class BaseAgent(threading.Thread):
 
-    def __init__(self, my_host, my_port):
+    def __init__(self, my_host, my_port,agents_map):
         threading.Thread.__init__(self, name="messenger_receiver")
+        self.agents_map=agents_map
         self.host = my_host
         self.port = my_port
         self.mysql = ehe.mysql.MySql()
         self.oracle = ehe.oracle.Oracle()
+
+    #getters
+    def get_agents_map(self,key):
+        my_list = self.agents_map['key']
+        return my_list
+
+    #setter
+    def set_agents_map(self,list,key):
+        self.agents_map['key']=list
 
     def listen(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
