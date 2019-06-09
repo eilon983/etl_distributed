@@ -18,7 +18,7 @@ class BaseAgent(threading.Thread):
         self.mysql = ehe.mysql.MySql()
         self.oracle = ehe.oracle.Oracle()
 
-    #getter
+    #getters
     def get_agents_map(self,key):
         my_list = self.agents_map['key']
         return my_list
