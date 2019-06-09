@@ -55,7 +55,7 @@ class BaseAgent(threading.Thread):
 
 
     @abstractmethod
-    def send_and_recive(self):
+    def recive(self):
         pass
 
     def run(self):
