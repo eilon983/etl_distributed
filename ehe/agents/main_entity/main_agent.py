@@ -24,9 +24,9 @@ class MainAgent(BaseAgent):
         for dt in requested_data_types:
             agent  = self.get_agent(dt, request_file)
             if agent != "Not Available":
-                contacts[dt] = self.get_agent(dt)
+                contacts[dt] = agent
 
-        if contacts.__len__() > 0:
+        if contacts.__len__() > 0:  #
             self.send(request_file.sender.address, contacts)
 
     # ---runs over all the waiting list and notify them if the current agent has information for them
@@ -37,7 +37,7 @@ class MainAgent(BaseAgent):
                 for agent_name in self.waiting_list[dt]:      # for each agent update cur agent detail
                     agent_data = self.agents_book[agent_name]
                     self.send(agent_data.address, agent_file)
-                self.waiting_list.pop(dt)
+                self.waiting_list.pop(dt)                     # remove data type from waiting list
 
     # ---get the requested data type, and the agents who asked for dt
     # ---if data type not exists add the agent to the waiting list
@@ -49,10 +49,9 @@ class MainAgent(BaseAgent):
         self.waiting_list[data_type].append(agent_requ['name'])
         return "Not Available"
 
-    # todo: call the functions from here according to the json in message
     def receive(self, message):
         request_type = message.request.type
-        if request_type == "connection_request":
+        if request_type == "ping":
             self.pinged(message)
         elif request_type == "request_for_agent_details":
             self.bridge(message)
