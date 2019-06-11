@@ -4,6 +4,8 @@ from abc import abstractmethod
 import time
 import ehe.mysql
 import ehe.oracle
+import json
+
 ENCODING = 'utf-8'
 
 
@@ -39,7 +41,7 @@ class BaseAgent(threading.Thread):
                 full_message = ""
                 while True:
                     data = connection.recv(16)
-                    t1 = threading.Thread(target=self.send_and_recive,args=(connection,data))
+                    t1 = threading.Thread(target=self.receive,args=(connection, json.loads(data)))
                     t1.start()
                     #full_message = full_message + data.decode(ENCODING)
 
@@ -50,11 +52,13 @@ class BaseAgent(threading.Thread):
                 connection.shutdown(2)
                 connection.close()
 
-    def send(self,send_list): #list of [address,data(json)]
+    def send(self,package):
+        # send package to package.target.ip, package.target.port
+        #TODO!!!
+        jsonObj = json.loads(package)
         for node in send_list:
            pass #multi thread - open socket to node['address'] and send the data node['data']
         pass
-
 
     # ---checks every x millisconds(frequency) if there was an update in db
     def db_listner(self):
@@ -63,12 +67,12 @@ class BaseAgent(threading.Thread):
             t1 = threading.Thread(target=self.start_listner, args=(connection, data))
             t1.start()
 
-    @abstractmethod
+    @abstractmethod #implement in derived class
     def start_listner(self):
         pass
 
     @abstractmethod
-    def recive(self):
+    def receive(self, connection, data):
         pass
 
     def run(self):
