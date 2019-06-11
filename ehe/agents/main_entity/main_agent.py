@@ -1,5 +1,6 @@
 import socket
 import threading
+import json
 from ehe.agents.base_agent import BaseAgent
 ENCODING = 'utf-8'
 
@@ -30,14 +31,59 @@ class MainAgent(BaseAgent):
             self.send(request_file.sender.address, contacts)
 
     # ---runs over all the waiting list and notify them if the current agent has information for them
-    # todo it smart - done
     def check_waiting_list(self, data_types, agent_file):  # data_types = list of cols
+        agents_to_update = {}
         for dt in data_types:
             if dt in self.waiting_list:                       # in case cur agent data in waiting list:
                 for agent_name in self.waiting_list[dt]:      # for each agent update cur agent detail
-                    agent_data = self.agents_book[agent_name]
-                    self.send(agent_data.address, agent_file)
-                self.waiting_list.pop(dt)                     # remove data type from waiting list
+                    agents_to_update[agent_name].append(dt)
+                self.waiting_list.pop(dt)                         # remove data type from waiting list
+
+        for agent_name in agents_to_update:
+            agent_data = self.agents_book[agent_name]
+            update_file = self.make_update_file(self, agent_file, agents_to_update[agent_name])
+            self.send(agent_data.address, update_file)
+
+    # -- make json file to update agent in waiting list for new data
+    def make_update_file(self, agent_file, data_types):
+        data_array = "["        # data array to string
+        counter = 0             # count data amount to close string list
+        for dt in data_types:
+            if counter == len(data_types):
+                data_array += "{}, ".format(dt)
+                counter += 1
+            else:
+                data_array += "{}]".format(dt)
+
+        # -- make json data filr:
+        update_data = {'sender': [], 'request': [], 'response': []}
+        update_data['sender'].append({
+            'agent_name': "main agent",
+            'address': {
+                'ip':  "1234.1234.1234.1234",
+                'port': '1111'
+            },
+            'data_type': "null"
+        })
+        update_data['request'].append({
+            'type': '"new_agent_for_waiting_data"',
+            'get_data': {
+                'timestamp': '05-06-2019',
+                'key': 'null',                    # array = [ [agent_name, agent_ip, agent_port], [data1, data2, ..] ]
+                'array': "[ [{}, {}, {}], {}]".format(agent_file.agent_name, agent_file.address.ip, agent_file.address.port, data_array)
+            }})
+        update_data['response'].append({
+            'answer': 'null',
+            'data': 'null',
+            'agent': {
+                'agent_data_type': 'null',
+                'agent_ip': 'null',
+                'agent_port': 'null'
+            }})
+
+        with open('update_data.txt', 'w') as update_file:
+            json.dump(update_data, update_file)
+        return update_file
 
     # ---get the requested data type, and the agents who asked for dt
     # ---if data type not exists add the agent to the waiting list
