@@ -52,13 +52,18 @@ class BaseAgent(threading.Thread):
                 connection.shutdown(2)
                 connection.close()
 
-    def send(self,package):
-        # send package to package.target.ip, package.target.port
-        #TODO!!!
-        jsonObj = json.loads(package)
-        for node in send_list:
-           pass #multi thread - open socket to node['address'] and send the data node['data']
-        pass
+    # --send new messages and waits the receiver to answer and close connections
+    def send(self, send_list):
+        for package in send_list:
+            json_obj = json.loads(package)
+            t = threading.Thread(target=self.send_package, args=(json_obj,))
+            t.start()
+
+    # --send a single package
+    def send_package(self, package):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((package.target.ip, package.target.port))
+        sock.sendall(package)
 
     # ---checks every x millisconds(frequency) if there was an update in db
     def db_listner(self):
@@ -67,7 +72,7 @@ class BaseAgent(threading.Thread):
             t1 = threading.Thread(target=self.start_listner, args=(connection, data))
             t1.start()
 
-    @abstractmethod #implement in derived class
+    @abstractmethod   # implement in derived class
     def start_listner(self):
         pass
 
