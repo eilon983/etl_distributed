@@ -5,19 +5,14 @@ from ehe.agents.base_agent import BaseAgent
 ENCODING = 'utf-8'
 
 
-
-
 class MainAgent(BaseAgent):
 
     def __init__(self, my_host, my_port, frequency):
         super(BaseAgent, my_host, my_port, frequency)
-        json = {
-            'sender': {'agent_name': 'MainAgent', 'ip': self.ip, 'port': self.port, 'data_types' : ''},
-            'target': {'agent_name': '','ip': '', 'port': ''},
-            'body': {'type': '', 'data': ''},
-               }
+        self.json.agent_name = 'Main agent'
+        self.json.address.ip = self.host
+        self.json.address.port = self.port
         self.waiting_list = {}  # dictionary of lists. key = data type, value: list of agents who wait for data types
-        self.agents_book = {}   # dictionary of 'contact book' with the details of all the available agents
 
     # in case agents make FIRST connection
     def pinged(self, connection, message):
@@ -52,22 +47,22 @@ class MainAgent(BaseAgent):
         return response
 
     # runs over all the waiting list and notify them if the current agent has information for them
-    def update_waiting_list(self, data_types, agent):  # data_types = list of cols
+    def update_waiting_list(self, data_types, sender):  # data_types = list of cols
         agents_to_update = {}
         for dt in data_types:
             if dt in self.waiting_list:                       # in case cur agent data in waiting list:
                 for agent in self.waiting_list[dt]:      # for each agent update cur agent detail
                     agents_to_update[agent.agent_name].append(dt)
                 self.waiting_list.pop(dt)                         # remove data type from waiting list
-        self.update_agents(agents_to_update)
+        self.update_agents(agents_to_update, sender)
 
-    def update_agents(self, agents_to_update):
+    def update_agents(self, agents_to_update, data_agent):
         send_list = {}
         for agent_name, dts in agents_to_update:   # key = agent name, value = the list of data types to update him
             package = json
             package.sender = {'agent_name': 'main agent','address': {'ip': self.ip, 'port': self.port}}
             package.target = self.agents_book[agent_name]
-            package.body.type = {'new agent update' : agent}
+            package.body.type = {'new agent update' : data_agent}
             package.body.data = dts
             send_list.append(package)
         self.send(send_list)

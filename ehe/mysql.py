@@ -18,9 +18,9 @@ class MySql(object):
                     timeout=2000,
                     autocommit=True,
                     **ehe.config['mysql'])
-            #will try two times to connect
+            # will try two times to connect
             except:
-                mydb = mysql.connector.connect(
+                self.mydb = mysql.connector.connect(
                     timeout=2000,
                     autocommit=True,
                     **ehe.config['mysql'])
@@ -48,13 +48,11 @@ class MySql(object):
         """return results as list"""
         return list(self.execute(query))
 
-
     def execute_to_dataframe(self, query):
         """
         Execute the query and return a pandas dataframe of the results
         """
         return pd.read_sql(query, self.connection)
-
 
     def insert_dataframe_to_table(self, table_name, insert_df,connection):
         with self.connection as connection:
